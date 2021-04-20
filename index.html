@@ -25,9 +25,39 @@
             sceneModePicker : false,
             terrainProvider: Cesium.createWorldTerrain()
         });
+        const pinBuilder = new Cesium.PinBuilder();
+
+
+//murder pins -- move to JSON
+        const murder1=viewer.entities.add({
+            name: "homicide pin #1",
+            position: Cesium.Cartesian3.fromDegrees( -97.695850, 30.324990),
+             billboard: {
+                image: pinBuilder.fromColor(Cesium.Color.RED, 48).toDataURL(),
+                verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+            },
+        });
+        const murder2 = viewer.entities.add({
+            name: "homicide pin #2",
+            position: Cesium.Cartesian3.fromDegrees(-97.787450, 30.218890),
+            billboard: {
+                image: pinBuilder.fromColor(Cesium.Color.RED, 48).toDataURL(),
+                verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+                // eyeOffset: new Cesium.Cartesian3(0, 0, 0)
+            },
+        });
+        const murder3 = viewer.entities.add({
+            name: "homicide pin #3",
+            position: Cesium.Cartesian3.fromDegrees(-97.716220, 30.237970),
+            billboard: {
+                image: pinBuilder.fromColor(Cesium.Color.RED, 48).toDataURL(),
+                verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+            },
+        });
+
         // Add Cesium OSM Buildings, a global 3D buildings layer.
         const buildingTileset = viewer.scene.primitives.add(Cesium.createOsmBuildings());
-        viewer.dataSources.add(Cesium.KmlDataSource.load('./data/2021Homicides.kml',
+        viewer.dataSources.add(Cesium.KmlDataSource.load('./data/2021HomicidesApril19.kml',
         // Fly the camera to Austin at the given longitude, latitude, and height.
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-97.745000, 30.150666, 4500),
